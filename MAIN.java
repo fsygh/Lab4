@@ -20,7 +20,7 @@ public class MAIN
 	
 	public int [][] edge_matrix=null;//邻接矩阵
 	
-	int max_weight=100000;//无路径的初始值
+	int MAX_WEIGHT=100000;//无路径的初始值
 	
 	GraphViz gv_1 = new GraphViz();//一个点到所有点的路径
 	
@@ -78,9 +78,9 @@ public class MAIN
 				return
 			for(int i=0;i<this.vertex;i++)
 			{
-				if(this.edge_matrix[wordnum1][i]!=this.max_weight)
+				if(this.edge_matrix[wordnum1][i]!=this.MAX_WEIGHT)
 				{
-					if(this.edge_matrix[i][wordnum2]!=this.max_weight)
+					if(this.edge_matrix[i][wordnum2]!=this.MAX_WEIGHT)
 					{
 						bridgewords+=this.number_vertex.get(i)+", ";			
 					}
@@ -126,11 +126,11 @@ public class MAIN
 				int wordnum2=this.vertex_number.get(inputWords[i+1]);
 				for(int j=0;j<this.vertex;j++)
 				{
-					if(this.edge_matrix[wordnum1][j]!=this.max_weight)
+					if(this.edge_matrix[wordnum1][j]!=this.MAX_WEIGHT)
 					{
-						if(this.edge_matrix[j][wordnum2]!=this.max_weight)
+						if(this.edge_matrix[j][wordnum2]!=this.MAX_WEIGHT)
 						{
-							if(this.edge_matrix[wordnum1][wordnum2]==this.max_weight)//两个单词之间不能有路径
+							if(this.edge_matrix[wordnum1][wordnum2]==this.MAX_WEIGHT)//两个单词之间不能有路径
 							{
 								vectemp.add(this.number_vertex.get(j));
 							}
@@ -192,7 +192,7 @@ public class MAIN
 		int i=this.vertex_number.get(word1);
 		int j=this.vertex_number.get(word2);
 		 min_pass_edge.add(word1);
-		if(D[i][j]!=this.max_weight &&i!=j)
+		if(D[i][j]!=this.MAX_WEIGHT &&i!=j)
        { 
            print_minpass(P, i, j,min_pass_edge);
        }
@@ -287,7 +287,7 @@ public class MAIN
 			Vector<String> vectemp=new Vector<>();
 		    for(int j=0;j<vertex;j++)
 		    {
-		    	if(edge_matrix[frist_number][j]!=this.max_weight)
+		    	if(edge_matrix[frist_number][j]!=this.MAX_WEIGHT)
 		    	{	
 		    		vectemp.add(this.number_vertex.get(j));
 		    	}
@@ -359,7 +359,7 @@ public class MAIN
 
 	public static void main(String[] args) 
 	{
-			MAIN obj1=new MAIN();
+			public MAIN obj1=new MAIN();
 			String str=new String();
 			Scanner cin=new Scanner(System.in);
 			while(true)
@@ -449,13 +449,13 @@ public class MAIN
 				}
 			}
 			obj1.vertex=obj1.number_vertex.size();
-			//邻接矩阵初始化，全部为max_weight
+			//邻接矩阵初始化，全部为MAX_WEIGHT
 			obj1.edge_matrix=new int[obj1.vertex][obj1.vertex];
 			for(int i=0;i<obj1.vertex;i++)//初始化邻接矩阵
 			{
 				for(int j=0;j<obj1.vertex;j++)
 				{
-					obj1.edge_matrix[i][j]=obj1.max_weight;
+					obj1.edge_matrix[i][j]=obj1.MAX_WEIGHT;
 				}
 			}
 			
@@ -638,7 +638,8 @@ public class MAIN
 
 		public void calcShortestPath(String word1, String word2,String cl) //最短路径
 		{
-			Vector<String> min_pass_edge=new Vector<>();	//记录两点间的路径（包括这俩个点）	
+
+			Vector<String> min_pass_edge=new Vector<String>();	//记录两点间的路径（包括这俩个点）	
 			
 			int[][] D=new int[this.vertex][this.vertex];
 			int[][] P=new int[this.vertex][this.vertex];//表示编号为i,j边之间的最短路径
@@ -669,7 +670,7 @@ public class MAIN
 			int i=this.vertex_number.get(word1);
 			int j=this.vertex_number.get(word2);
 			 min_pass_edge.add(word1);
-			if(D[i][j]!=this.max_weight &&i!=j)
+			if(D[i][j]!=this.MAX_WEIGHT &&i!=j)
 	        { 
 	            print_minpass(P, i, j,min_pass_edge);
 	        }

@@ -1,7 +1,7 @@
 package we;
 import java.awt.*;
 import java.io.*;
-import java.util.*;
+
 public class MAIN
 {
 	public String[] words_original;	//初始的所有单词数组,按读进来的数据中的次序依次将文章拆分成单词
@@ -22,7 +22,7 @@ public class MAIN
 	
 	int max_weight=100000;//无路径的初始值
 	
-	public GraphViz gv_1 = new GraphViz();//一个点到所有点的路径
+	GraphViz gv_1 = new GraphViz();//一个点到所有点的路径
 	
 	public void showDirectedGraph()//输出有向图
 	{
@@ -107,8 +107,8 @@ public class MAIN
 		return bridgewords;
 	}
 	
-	
-	public String generateNewText(String inputText)//根据桥接词生成新文本
+	//根据桥接词生成新文本
+	public String generateNewText(String inputText) 
 	{
 
 		//将inputText按照空格拆分拆分成单词，依次放入字符串数组中,inputText本身并不变

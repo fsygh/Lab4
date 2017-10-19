@@ -74,7 +74,8 @@ public class MAIN
 		{
 			int wordnum1=this.vertex_number.get(word1);
 			int wordnum2=this.vertex_number.get(word2);
-		
+			if(wordnum1==-1 || wordnum2==-1)
+				return
 			for(int i=0;i<this.vertex;i++)
 			{
 				if(this.edge_matrix[wordnum1][i]!=this.max_weight)
@@ -109,12 +110,12 @@ public class MAIN
 	
 	public String generateNewText(String inputText)//根据桥接词生成新文本
 	{
+
 		//将inputText按照空格拆分拆分成单词，依次放入字符串数组中,inputText本身并不变
-		String strtemp=inputText.replaceAll("[^a-zA-Z]+", " ").toLowerCase();
+		String strtemp=inputText.replaceAll("[^A-Za-z., \n?!:;(){}\"\'-]","").replaceAll("[^A-Za-z]"," ").replaceAll(" +"," ").trim().toLowerCase();
 		String[] inputWords=strtemp.split("[\\s]");
 	    String result="";
-	    
-		for(int i=0;i<inputWords.length-1;i++)
+		for(int i=0;i<inputWords.length-1;i++)//改进缩进问题
 		{
 			result=result+inputWords[i]+" ";   //加入输入文本的第一个单词
 			Vector<String> vectemp=new Vector<>();//存放所有桥词，后面随机产生下表选取其中一个
